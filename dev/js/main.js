@@ -15,7 +15,7 @@ var sketch = new Sketch();
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     }, false);
-    camera.position.y = 20
+    camera.position.y = 40
     scene.add(camera);
     sketch.init();
 })();

@@ -1,7 +1,7 @@
 const initEnvironment = () => {
-    geo = new THREE.PlaneGeometry(100, 100, 25, 25);
+    geo = new THREE.PlaneGeometry(80, 80, 25, 25);
     mat = new THREE.MeshBasicMaterial({
-        color: 0x6796ff,
+        color: 0xff6767,
         side: THREE.DoubleSide
         //wireframe: true
     })
