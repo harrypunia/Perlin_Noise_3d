@@ -5,7 +5,7 @@ const initEnvironment = () => {
         wireframe: true
     })
     mesh = new THREE.Mesh(geo, mat);
-    mesh.rotation.x = -1.2;
+    mesh.rotation.x = Math.PI / 2;
     floor = mesh;
     createMesh('clearRam');
 }

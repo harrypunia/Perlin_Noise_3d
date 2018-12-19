@@ -15,13 +15,14 @@ var sketch = new Sketch();
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     }, false);
-    camera.position.set(0, 0, 20);
+    camera.position.y = 20
     scene.add(camera);
     sketch.init();
 })();
 
 (animate = () => {
     sketch.update();
+    camera.lookAt(scene.position);
     renderer.render(scene, camera);
     renderer.setClearColor(0x101012);
     requestAnimationFrame(animate);
