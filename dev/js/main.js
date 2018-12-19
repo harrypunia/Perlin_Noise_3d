@@ -1,7 +1,7 @@
-var sketch = new Sketch(),
-    scene, renderer, camera;
+var sketch = new Sketch();
 
-const init = () => {
+(() => {
+    canvas = document.getElementsByClassName('canvas')[0];
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
     renderer = new THREE.WebGLRenderer({
@@ -9,7 +9,8 @@ const init = () => {
         alpha: true
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    canvas.appendChild(renderer.domElement);
+    document.body.appendChild(canvas);
     window.addEventListener("resize", () => {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
@@ -17,13 +18,11 @@ const init = () => {
     }, false);
     scene.add(camera);
     sketch.init();
-    animate();
-}
+})();
 
-const animate = () => {
+(animate = () => {
     sketch.update();
     renderer.render(scene, camera);
+    renderer.setClearColor(0x652222, 0);
     requestAnimationFrame(animate);
-}
-
-init();
+})();
