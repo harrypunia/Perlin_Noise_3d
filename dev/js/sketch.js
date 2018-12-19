@@ -5,11 +5,13 @@ const initBoxes = () => {
         wireframe: true
     });
     for (let x = 0; x < 100; x += 4) {
+        noise.seed(Math.random());
         for (let y = 0; y < 100; y += 4) {
             mesh = new THREE.Mesh(geo, mat);
             mesh.position.set(x - 50, 1.9, y - 50);
             boxes.push(mesh);
             createMesh('clearMesh');
+            console.log(Math.abs(noise.perlin2(x / 100, y / 100)))
         }
     }
 }
