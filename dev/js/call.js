@@ -12,5 +12,5 @@ const clearRam = many => {
 
 const createMesh = clear => {
     scene.add(mesh);
-    clearRam('all')
+    clear == 'clearRam' ? clearRam('all') : 0;
 }
