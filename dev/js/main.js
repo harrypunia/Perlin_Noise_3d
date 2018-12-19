@@ -15,6 +15,7 @@ var sketch = new Sketch();
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     }, false);
+    camera.position.set(0, 0, 10);
     scene.add(camera);
     sketch.init();
 })();
@@ -22,6 +23,6 @@ var sketch = new Sketch();
 (animate = () => {
     sketch.update();
     renderer.render(scene, camera);
-    renderer.setClearColor(0x652222, 0);
+    renderer.setClearColor(0x101012);
     requestAnimationFrame(animate);
 })();
