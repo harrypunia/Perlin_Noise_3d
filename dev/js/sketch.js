@@ -16,10 +16,12 @@ const initBoxes = () => {
     }
 }
 
-const updateBoxes = () => {
+const updateBoxes = (freq) => {
+    let currentFreq = 0;
+    freq == undefined ? currentFreq = 0 : currentFreq = freq / 10;
     for (let i in boxes) {
         let value = (Math.abs(noise.perlin2(boxes[i].px / 100, boxes[i].py / 100)) * 10) - 4;
-        boxes[i].position.y = value;
+        boxes[i].position.y = value + currentFreq;
         boxes[i].px += perlin.freq;
         boxes[i].py += perlin.freq;
         boxes[i].material.color.setRGB(value / 2, 0, boxes[i].py);
@@ -48,11 +50,10 @@ class Sketch {
         initBoxes();
     }
     update() {
-        once ? (audioData = analyzer.getAverageFrequency(), perlin.freq = .5 + audioData / 40) : 0;
+        once ? (audioData = analyzer.getAverageFrequency(), perlin.freq = .5 + audioData / 40, updateBoxes(audioData)) : updateBoxes();
         angle += freq;
         camera.position.x = radius * Math.sin(angle);
         camera.position.z = radius * Math.cos(angle);
-        updateBoxes();
     }
 }
 
