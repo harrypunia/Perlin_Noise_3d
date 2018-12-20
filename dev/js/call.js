@@ -1,14 +1,19 @@
 var scene, renderer, camera, canvas, geo, mat, mesh, floor, boxes = [],
+    once = false,
     angle = 0,
     freq = 0.002,
     radius = 100,
     noise,
+    listener = new THREE.AudioListener(),
+    sound = new THREE.Audio(listener),
+    audioLoader = new THREE.AudioLoader(),
+    analyzer,
+    audoData,
     perlin = {
         freq: .5,
         dir: true,
         inc: .005
-    },
-    lilly = new Audio("assets/audio/lilly.mp3");
+    };
 
 //noise.seed(Math.random());
 
@@ -23,6 +28,6 @@ const clearRam = many => {
 }
 
 const createMesh = clear => {
-    scene.add(mesh);
-    clear == 'clearRam' ? clearRam('all') : clear == 'clearMesg' ? clearRam('onlyMesh') : 0;
+    scene.add(mesh)
+    clear == 'all' ? clearRam('all') : 0;
 }

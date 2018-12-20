@@ -31,16 +31,32 @@ const perlinVariation = () => {
     perlin.freq > 3 ? perlin.dir = false : perlin.freq < .2 ? perlin.dir = true : 0;
 }
 
+const getAudioFreq = () => {
+    audioLoader.load('../../assets/audio/lilly.mp3', buffer => {
+        sound.setBuffer(buffer);
+        sound.setLoop(true);
+        sound.setVolume(1);
+        sound.play();
+    });
+    analyzer = new THREE.AudioAnalyser(sound, 32);
+    audioData = analyzer.getAverageFrequency();
+}
+
 class Sketch {
     constrctor() {}
     init() {
         initBoxes();
     }
     update() {
+        once ? (audioData = analyzer.getAverageFrequency(), perlin.freq = .5 + audioData / 40) : 0;
         angle += freq;
         camera.position.x = radius * Math.sin(angle);
         camera.position.z = radius * Math.cos(angle);
         updateBoxes();
-        //perlinVariation();
     }
 }
+
+window.addEventListener("click", () => {
+    once = true;
+    getAudioFreq();
+})
