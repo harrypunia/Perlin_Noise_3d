@@ -4,7 +4,9 @@ var scene, renderer, camera, canvas, geo, mat, mesh, floor, boxes = [],
     radius = 100,
     noise,
     perlin = {
-        freq: 1
+        freq: .5,
+        dir: true,
+        inc: .005
     }
 
 noise.seed(Math.random());
