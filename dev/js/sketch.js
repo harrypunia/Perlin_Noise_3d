@@ -24,7 +24,7 @@ const updateBoxes = (freq) => {
         boxes[i].position.y = value + currentFreq;
         boxes[i].px += perlin.freq;
         boxes[i].py += perlin.freq;
-        boxes[i].material.color.setRGB(value / 2, 0, boxes[i].py);
+        boxes[i].material.color.setRGB(value + currentFreq / 2, 0, boxes[i].py);
     }
 }
 
