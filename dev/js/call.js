@@ -7,9 +7,10 @@ var scene, renderer, camera, canvas, geo, mat, mesh, floor, boxes = [],
         freq: .5,
         dir: true,
         inc: .005
-    }
+    },
+    lilly = new Audio("assets/audio/lilly.mp3");
 
-noise.seed(Math.random());
+//noise.seed(Math.random());
 
 const clearRam = many => {
     if (many == 'all') {

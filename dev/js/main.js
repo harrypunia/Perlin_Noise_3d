@@ -18,6 +18,9 @@ var sketch = new Sketch();
     camera.position.y = 40
     scene.add(camera);
     sketch.init();
+    lilly.play().catch(() => {
+        lilly.play();
+    })
 })();
 
 (animate = () => {

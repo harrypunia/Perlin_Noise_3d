@@ -4,8 +4,7 @@ const initBoxes = () => {
         for (let y = 0; y < 100; y += 4) {
             mat = new THREE.MeshBasicMaterial({
                 color: 0xffffff,
-                wireframe: true,
-                emissive: 0xffffff
+                wireframe: true
             });
             mesh = new THREE.Mesh(geo, mat);
             mesh.position.set(x - 48, 4, y - 48);
@@ -42,6 +41,6 @@ class Sketch {
         camera.position.x = radius * Math.sin(angle);
         camera.position.z = radius * Math.cos(angle);
         updateBoxes();
-        perlinVariation();
+        //perlinVariation();
     }
 }
